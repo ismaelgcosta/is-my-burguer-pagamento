@@ -1,0 +1,16 @@
+services:
+  is-my-burguer-pedido:
+    container_name: is-my-burguer-pedido
+    image: docker.io/ismaelgcosta/is-my-burguer-pedido:is-my-burguer-pagamento-2.0
+    build:
+        dockerfile: Dockerfile
+    ports:
+      - '127.0.0.1:8943:8943'
+    restart: unless-stopped
+    networks:
+      - ismyburguer-backend
+
+networks:
+  ismyburguer-backend:
+    external: false
+    driver: bridge

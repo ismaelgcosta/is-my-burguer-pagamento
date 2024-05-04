@@ -1,0 +1,117 @@
+logging.level.org.springframework.web: DEBUG
+logging.level.org.hibernate: ERROR
+
+http:
+  client:
+    ssl:
+      trust-store: classpath:springboot.p12
+      trust-store-password: password
+
+feign:
+  httpclient:
+    disableSslValidation: true
+    enabled: false
+  okhttp:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - mappings
+          - env
+          - health
+          - info
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+    show-actuator: true
+  show-actuator: true
+  cache:
+    disabled: true
+server:
+  servlet:
+    context-path: /
+  forward-headers-strategy: framework
+  ssl:
+    key-store: classpath:springboot.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: password
+  port: 8743
+aws:
+  api-gateway: https://is-my-burguer-sd-lb
+  region: ${AWS_REGION}
+  cognito:
+    domain: ${CLIENT_DOMAIN}
+    user-pool-id: ${AWS_COGNITO_USER_POOL_ID}
+
+spring:
+  application:
+    name: is-my-burguer-pagamento
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/is-my-burguer-pagamento?retryWrites=true&w=majority&appName=is-my-burguer-mongodb
+
+  security:
+    oauth2:
+      client:
+        provider:
+          cognito:
+            authorization-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/authorize
+            token-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/token
+            user-info-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/userInfo
+            jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+            issuerUri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
+            user-name-attribute: username
+            authorization-grant-type: authorization_code
+
+        resourceserver:
+          cognito:
+            jws-algorithms: RS256
+            jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+            issuer-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  instance:
+    hostname: is-my-burguer-pedido-svc
+    preferIpAddress: false
+    secure-port: ${server.port}
+    secure-port-enabled: true
+    non-secure-port-enabled: false
+    secure-virtual-host-name: ${spring.application.name}
+    home-page-url-path: https://${eureka.instance.hostname}:${server.port}/${server.servlet.context-path}/
+    status-page-url-path: https://${eureka.instance.hostname}:${server.port}/${server.servlet.context-path}/info
+    health-check-url: https://${eureka.instance.hostname}:${server.port}/${server.servlet.context-path}/health
+    lease-renewal-interval-in-seconds: 15
+
+  client:
+    secure-port-enabled: true
+    secure-port: 443
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://is-my-burguer-sd-lb/eureka
+    healthcheck:
+      enabled: true
+    tls:
+      enabled: true
+      key-store: classpath:springboot.p12
+      key-store-password: password
+      key-store-type: pkcs12
+      key-alias: springboot
+      key-password: password
+      trust-store: classpath:springboot.p12
+      trust-store-password: password
+      trust-store-type: pkcs12
