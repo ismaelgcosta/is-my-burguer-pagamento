@@ -1,11 +1,20 @@
 services:
-  is-my-burguer-pedido:
-    container_name: is-my-burguer-pedido
-    image: docker.io/ismaelgcosta/is-my-burguer-pedido:is-my-burguer-pagamento-2.0
+  is-my-burguer-pagamento:
+    container_name: is-my-burguer-pagamento
+    image: docker.io/ismaelgcosta/is-my-burguer-pagamento:is-my-burguer-pagamento-2.1.4
+    environment:
+      - SERVICE_DISCOVERY_USERNAME
+      - SERVICE_DISCOVERY_PASSWORD
+      - MONGODB_HOST
+      - MONGODB_PASSWORD
+      - MONGODB_USER
+      - CLIENT_DOMAIN
+      - AWS_REGION
+      - AWS_COGNITO_USER_POOL_ID
     build:
         dockerfile: Dockerfile
     ports:
-      - '127.0.0.1:8943:8943'
+      - '127.0.0.1:8743:8743'
     restart: unless-stopped
     networks:
       - ismyburguer-backend

@@ -1,21 +1,21 @@
 package br.com.ismyburguer.pedido.entity;
 
 
-import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.text.MessageFormat;
 import java.util.Optional;
 import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Pedido implements Validation {
 
     @Valid
@@ -26,7 +26,7 @@ public class Pedido implements Validation {
     private ClienteId clienteId;
 
     @Getter
-    private StatusPedido statusPedido = StatusPedido.ABERTO;
+    private StatusPedido statusPedido;
 
     @Setter
     private BigDecimal total;
@@ -50,10 +50,6 @@ public class Pedido implements Validation {
             this.descricao = descricao;
         }
 
-        public String getDescricao() {
-            return descricao;
-        }
-
         @Override
         public String toString() {
             return descricao;
@@ -73,7 +69,6 @@ public class Pedido implements Validation {
     }
 
     @Getter
-    @AllArgsConstructor
     public static class ClienteId {
 
         @NotNull(message = "Informe o código do Cliente")
@@ -88,7 +83,4 @@ public class Pedido implements Validation {
         return Optional.ofNullable(clienteId);
     }
 
-    public Optional<PedidoId> getPedidoId() {
-        return Optional.ofNullable(pedidoId);
-    }
 }

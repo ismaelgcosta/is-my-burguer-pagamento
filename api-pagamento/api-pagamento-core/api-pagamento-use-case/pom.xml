@@ -48,6 +48,13 @@
             <artifactId>api-pedido-adapter</artifactId>
             <version>1.3.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-controle-pedido-adapter</artifactId>
+            <version>1.3.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>

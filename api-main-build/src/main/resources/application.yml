@@ -54,6 +54,9 @@ aws:
     user-pool-id: ${AWS_COGNITO_USER_POOL_ID}
 
 spring:
+  profiles:
+    active: dev
+
   application:
     name: is-my-burguer-pagamento
   data:
@@ -100,7 +103,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: https://localhost/eureka
+      defaultZone: https://${SERVICE_DISCOVERY_USERNAME}:${SERVICE_DISCOVERY_PASSWORD}@localhost/eureka
     healthcheck:
       enabled: true
     tls:

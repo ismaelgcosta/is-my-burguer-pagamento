@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @OpenAPIDefinition
 @SecurityScheme(
-        name = "Bearer Authentication",
+        name = "Bearer-Authentication",
         type = SecuritySchemeType.HTTP,
         bearerFormat = "JWT",
         scheme = "bearer"

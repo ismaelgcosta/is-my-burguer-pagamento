@@ -32,14 +32,6 @@ public class PagamentoRequest {
 
     private String qrCode;
 
-    public PagamentoRequest(UUID pedidoId, StatusPagamento statusPagamento, TipoPagamento tipoPagamento, FormaPagamento formaPagamento, BigDecimal valorTotal) {
-        this.pedidoId = pedidoId;
-        this.statusPagamento = statusPagamento;
-        this.tipoPagamento = tipoPagamento;
-        this.formaPagamento = formaPagamento;
-        this.valorTotal = valorTotal;
-    }
-
     public PagamentoRequest(UUID pedidoId, StatusPagamento statusPagamento, TipoPagamento tipoPagamento, FormaPagamento formaPagamento, BigDecimal valorTotal, String qrCode) {
         this.pedidoId = pedidoId;
         this.statusPagamento = statusPagamento;

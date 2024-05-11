@@ -3,13 +3,13 @@ package br.com.ismyburguer.pagamento.adapter.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
@@ -18,14 +18,12 @@ import java.util.UUID;
 @Getter
 @Setter
 @Document(collection = "pagamentos")
-@AllArgsConstructor
 @NoArgsConstructor
 public class PagamentoModel {
 
     @Id
     private UUID pagamentoId = UUID.randomUUID();
 
-    @Column(name = "pedido_id", columnDefinition = "uuid references pedido(pedido_id)")
     private UUID pedidoId;
 
     @Enumerated(EnumType.STRING)
@@ -40,14 +38,6 @@ public class PagamentoModel {
     private BigDecimal valorTotal;
 
     private String qrCode;
-
-    public PagamentoModel(UUID pedidoId, StatusPagamento statusPagamento, TipoPagamento tipoPagamento, FormaPagamento formaPagamento, BigDecimal valorTotal) {
-        this.pedidoId = pedidoId;
-        this.statusPagamento = statusPagamento;
-        this.tipoPagamento = tipoPagamento;
-        this.formaPagamento = formaPagamento;
-        this.valorTotal = valorTotal;
-    }
 
     public PagamentoModel(UUID pedidoId, StatusPagamento statusPagamento, TipoPagamento tipoPagamento, FormaPagamento formaPagamento, BigDecimal valorTotal, String qrCode) {
         this.pedidoId = pedidoId;

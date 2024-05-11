@@ -8,7 +8,6 @@ import br.com.ismyburguer.pedido.gateway.out.ConsultarPedidoAPI;
 
 @UseCase
 public class ConsultarPedidoUseCaseImpl implements ConsultarPedidoUseCase {
-
     private final ConsultarPedidoAPI consultarPedidoAPI;
 
     public ConsultarPedidoUseCaseImpl(ConsultarPedidoAPI consultarPedidoAPI) {

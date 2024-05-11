@@ -1,0 +1,89 @@
+logging.level.org.springframework.web: DEBUG
+logging.level.org.hibernate: ERROR
+logging.level.org.springframework.boot.autoconfigure.mongo.embedded: TRACE
+logging.level.org.mongodb: TRACE
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 4.6.1
+
+eureka:
+  client:
+    enabled: false
+
+feign:
+  httpclient:
+    disableSslValidation: true
+    enabled: false
+  okhttp:
+    enabled: true
+
+http:
+  client:
+    ssl:
+      trust-store: classpath:springboot.p12
+      trust-store-password: password
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - mappings
+          - env
+          - health
+          - info
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+    show-actuator: false
+  show-actuator: false
+  cache:
+    disabled: false
+server:
+  servlet:
+    context-path: /
+  forward-headers-strategy: framework
+  ssl:
+    key-store: classpath:springboot.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: password
+  port: 8543
+aws:
+  api-gateway: http://localhost:8080
+  region: us-beast-1
+  cognito:
+    domain: domain
+    user-pool-id: userPool
+
+spring:
+  application:
+    name: is-my-burguer-pagamento
+
+  security:
+    oauth2:
+      client:
+        provider:
+          cognito:
+            authorization-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/authorize
+            token-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/token
+            user-info-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/userInfo
+            jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+            issuerUri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
+            user-name-attribute: username
+            authorization-grant-type: authorization_code
+
+        resourceserver:
+          cognito:
+            jws-algorithms: RS256
+            jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+            issuer-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}

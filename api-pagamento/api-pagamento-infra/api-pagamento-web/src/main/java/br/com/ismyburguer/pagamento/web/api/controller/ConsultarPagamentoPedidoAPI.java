@@ -27,7 +27,7 @@ public class ConsultarPagamentoPedidoAPI {
         this.consultaPagamentoPedidoConverter = consultaPagamentoPedidoConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Consultar Pagamento")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Consultar Pagamento")
     @GetMapping("/{pedidoId}")
     public ConsultaPagamentoPedidoResponse obter(@Valid @UUID @PathVariable(name = "pedidoId") String pedidoId) {
         return consultaPagamentoPedidoConverter.convert(consultarPagamentoPorPedidoUseCase.consultar(pedidoId));

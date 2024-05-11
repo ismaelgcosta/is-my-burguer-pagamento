@@ -7,12 +7,12 @@ RUN mvn clean
 RUN mvn install
 
 FROM eclipse-temurin:21-jdk-alpine as main
-EXPOSE 8843
-EXPOSE 5007
+EXPOSE 8743
+EXPOSE 5010
 
 COPY --from=build /is-my-burguer-pagamento/api-main-build/src/main/resources/springboot.crt springboot.crt
 RUN keytool -importcert -file springboot.crt -alias springboot -keystore $JDK_HOME/jre/lib/security/cacerts
-COPY --from=build /is-my-burguer-pagamento/api-main-build/target/is-my-burguer-pedido.jar is-my-burguer-pedido.jar
+COPY --from=build /is-my-burguer-pagamento/api-main-build/target/is-my-burguer-pagamento.jar is-my-burguer-pagamento.jar
 
 ENTRYPOINT ["java","-jar","is-my-burguer-pagamento.jar","--spring.profiles.active=production","-Dserver.port=8743"]
 #CMD ["sleep","infinity"] Only for testing

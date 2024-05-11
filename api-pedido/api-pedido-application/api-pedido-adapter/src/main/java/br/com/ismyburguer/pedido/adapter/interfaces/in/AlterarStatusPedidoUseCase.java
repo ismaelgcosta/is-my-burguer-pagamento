@@ -5,5 +5,5 @@ import br.com.ismyburguer.pedido.entity.Pedido;
 
 public interface AlterarStatusPedidoUseCase {
 
-    void alterar(Pagamento.PedidoId pedidoId, Pedido.StatusPedido statusPedido);
+    void alterar(Pedido.PedidoId pedidoId, Pedido.StatusPedido statusPedido);
 }

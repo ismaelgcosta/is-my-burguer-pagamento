@@ -53,9 +53,28 @@
         </dependency>
 
         <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-controle-pedido-client</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-controle-pedido-use-case</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>1.33</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-contract-wiremock -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -77,6 +96,19 @@
                     <jvmArguments>
                         -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5008
                     </jvmArguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <environmentVariables>
+                        <AWS_REGION>us-east-1</AWS_REGION>
+                        <AWS_COGNITO_USER_POOL_ID>abc</AWS_COGNITO_USER_POOL_ID>
+                        <MONGODB_HOST>localhost</MONGODB_HOST>
+                        <argLine>--spring.profiles.active=test</argLine>
+                    </environmentVariables>
                 </configuration>
             </plugin>
 

@@ -22,7 +22,7 @@ public class PagarPedidoAPI {
         this.useCase = useCase;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Consultar Pagamento")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Consultar Pagamento")
     @PostMapping("/{pedidoId}")
     public String pagar(@PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId) {
         return useCase.pagar(new Pagamento.PedidoId(pedidoId));

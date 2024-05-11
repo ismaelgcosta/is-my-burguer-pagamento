@@ -85,8 +85,8 @@ info:
 
 eureka:
   instance:
-    hostname: is-my-burguer-pedido-svc
-    preferIpAddress: false
+    hostname: is-my-burguer-pagamento-svc
+    preferIpAddress: true
     secure-port: ${server.port}
     secure-port-enabled: true
     non-secure-port-enabled: false
@@ -102,7 +102,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: https://is-my-burguer-sd-lb/eureka
+      defaultZone: https://${SERVICE_DISCOVERY_USERNAME}:${SERVICE_DISCOVERY_PASSWORD}@is-my-burguer-sd-lb/eureka
     healthcheck:
       enabled: true
     tls:
