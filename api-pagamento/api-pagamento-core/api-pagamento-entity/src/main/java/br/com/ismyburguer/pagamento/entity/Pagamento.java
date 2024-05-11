@@ -22,6 +22,7 @@ public class Pagamento implements Validation {
     @NotNull(message = "Informe o valor Total do Pedido")
     private Total total;
 
+    @Setter
     private StatusPagamento statusPagamento = StatusPagamento.AGUARDANDO_CONFIRMACAO;
 
     private FormaPagamento formaPagamento = FormaPagamento.MERCADO_PAGO;
