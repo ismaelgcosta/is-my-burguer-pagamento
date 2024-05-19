@@ -53,6 +53,7 @@ env:
   # github.client as <account>/<repo>
   IMAGE_NAME: is-my-burguer-pagamento-1.${{ github.run_id }}
   TERRAFORM_CLI_PATH: ${{ github.workspace }}/terraform
+  
 
 permissions:
   contents: read
@@ -90,7 +91,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: mvn clean install verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ismaelgcosta_is-my-burguer-pagamento
 
   docker-build:
