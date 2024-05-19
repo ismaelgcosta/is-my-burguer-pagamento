@@ -1,5 +1,7 @@
-package br.com.ismyburguer.pagamento.adapter.usecase.impl;
+package br.com.ismyburguer.pagamento.adapter.usecase.impl.steps;
+
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
+import br.com.ismyburguer.pagamento.adapter.usecase.impl.EfetuarPagamentoUseCaseImpl;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pagamento.gateway.out.EfetuarPagamentoRepository;
 import io.cucumber.java.Before;
@@ -60,8 +62,4 @@ public class EfetuarPagamentoSteps {
         assertEquals("00020101021243650016COM.MERCADOLIBRE02013063638f1192a-5fd1-4180-a180-8bcae3556bc35204000053039865802BR5925IZABEL AAAA DE MELO6007BARUERI62070503***63040B6D", pagamento.getQrCode());
     }
 
-    @Then("o pagamento deve ser validado")
-    public void o_pagamento_deve_ser_validado() {
-        verify(pagamento).validate();
-    }
 }
