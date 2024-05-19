@@ -1,7 +1,7 @@
 services:
   is-my-burguer-pagamento:
     container_name: is-my-burguer-pagamento
-    image: docker.io/ismaelgcosta/is-my-burguer-pagamento:is-my-burguer-pagamento-2.1.4
+    image: docker.io/ismaelgcosta/is-my-burguer-pagamento:is-my-burguer-pagamento-2.1.5
     environment:
       - SERVICE_DISCOVERY_USERNAME
       - SERVICE_DISCOVERY_PASSWORD
