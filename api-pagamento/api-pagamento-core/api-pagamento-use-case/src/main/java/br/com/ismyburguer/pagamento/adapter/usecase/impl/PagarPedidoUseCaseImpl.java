@@ -3,7 +3,6 @@ package br.com.ismyburguer.pagamento.adapter.usecase.impl;
 import br.com.ismyburguer.controlepedido.adapter.interfaces.in.GerarControlePedidoUseCase;
 import br.com.ismyburguer.controlepedido.entity.ControlePedido;
 import br.com.ismyburguer.core.usecase.UseCase;
-import br.com.ismyburguer.pagamento.adapter.interfaces.in.ConsultarPagamentoPorPedidoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.ConsultarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.PagarPedidoUseCase;
@@ -18,21 +17,19 @@ import java.util.UUID;
 public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
     private final EfetuarPagamentoUseCase pagamentoUseCase;
     private final ConsultarPagamentoUseCase consultarPagamentoUseCase;
-    private final ConsultarPagamentoPorPedidoUseCase consultarPagamentoPorPedidoUseCase;
     private final ConsultarPedidoUseCase pedidoUseCase;
     private final AlterarStatusPedidoUseCase alterarStatusPedidoUseCase;
     private final GerarControlePedidoUseCase gerarControlePedidoUseCase;
 
     public PagarPedidoUseCaseImpl(EfetuarPagamentoUseCase pagamentoUseCase,
                                   ConsultarPedidoUseCase pedidoUseCase,
-                                  ConsultarPagamentoUseCase consultarPagamentoUseCase, ConsultarPagamentoPorPedidoUseCase consultarPagamentoPorPedidoUseCase,
+                                  ConsultarPagamentoUseCase consultarPagamentoUseCase,
                                   AlterarStatusPedidoUseCase alterarStatusPedidoUseCase,
                                   GerarControlePedidoUseCase gerarControlePedidoUseCase
     ) {
         this.pagamentoUseCase = pagamentoUseCase;
         this.pedidoUseCase = pedidoUseCase;
         this.consultarPagamentoUseCase = consultarPagamentoUseCase;
-        this.consultarPagamentoPorPedidoUseCase = consultarPagamentoPorPedidoUseCase;
         this.alterarStatusPedidoUseCase = alterarStatusPedidoUseCase;
         this.gerarControlePedidoUseCase = gerarControlePedidoUseCase;
     }
