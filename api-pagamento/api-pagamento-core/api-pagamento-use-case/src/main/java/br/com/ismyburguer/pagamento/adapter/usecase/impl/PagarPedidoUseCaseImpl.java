@@ -18,21 +18,19 @@ import java.util.UUID;
 public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
     private final EfetuarPagamentoUseCase pagamentoUseCase;
     private final ConsultarPagamentoUseCase consultarPagamentoUseCase;
-    private final ConsultarPagamentoPorPedidoUseCase consultarPagamentoPorPedidoUseCase;
     private final ConsultarPedidoUseCase pedidoUseCase;
     private final AlterarStatusPedidoUseCase alterarStatusPedidoUseCase;
     private final GerarControlePedidoUseCase gerarControlePedidoUseCase;
 
     public PagarPedidoUseCaseImpl(EfetuarPagamentoUseCase pagamentoUseCase,
                                   ConsultarPedidoUseCase pedidoUseCase,
-                                  ConsultarPagamentoUseCase consultarPagamentoUseCase, ConsultarPagamentoPorPedidoUseCase consultarPagamentoPorPedidoUseCase,
+                                  ConsultarPagamentoUseCase consultarPagamentoUseCase,
                                   AlterarStatusPedidoUseCase alterarStatusPedidoUseCase,
                                   GerarControlePedidoUseCase gerarControlePedidoUseCase
     ) {
         this.pagamentoUseCase = pagamentoUseCase;
         this.pedidoUseCase = pedidoUseCase;
         this.consultarPagamentoUseCase = consultarPagamentoUseCase;
-        this.consultarPagamentoPorPedidoUseCase = consultarPagamentoPorPedidoUseCase;
         this.alterarStatusPedidoUseCase = alterarStatusPedidoUseCase;
         this.gerarControlePedidoUseCase = gerarControlePedidoUseCase;
     }
