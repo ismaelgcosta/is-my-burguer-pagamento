@@ -1,9 +1,7 @@
 package br.com.ismyburguer.pagamento.adapter.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +11,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -38,6 +37,8 @@ public class PagamentoModel {
     private BigDecimal valorTotal;
 
     private String qrCode;
+
+    private LocalDateTime dataPagamento = LocalDateTime.now();
 
     public PagamentoModel(UUID pedidoId, StatusPagamento statusPagamento, TipoPagamento tipoPagamento, FormaPagamento formaPagamento, BigDecimal valorTotal, String qrCode) {
         this.pedidoId = pedidoId;

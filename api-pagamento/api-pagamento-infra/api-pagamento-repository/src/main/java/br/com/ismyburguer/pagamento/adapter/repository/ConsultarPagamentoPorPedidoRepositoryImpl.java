@@ -9,6 +9,8 @@ import br.com.ismyburguer.pagamento.gateway.out.ConsultarPagamentoPorPedidoRepos
 import br.com.ismyburguer.pagamento.gateway.out.ConsultarPagamentoRepository;
 import org.hibernate.validator.constraints.UUID;
 
+import java.util.Comparator;
+
 @PersistenceAdapter
 public class ConsultarPagamentoPorPedidoRepositoryImpl implements ConsultarPagamentoPorPedidoRepository {
     private final PagamentoRepository pagamentoRepository;
@@ -22,7 +24,9 @@ public class ConsultarPagamentoPorPedidoRepositoryImpl implements ConsultarPagam
 
     @Override
     public Pagamento consultar(@UUID String pedidoId) {
-        PagamentoModel pagamento = pagamentoRepository.findByPedidoId(java.util.UUID.fromString(pedidoId))
+        PagamentoModel pagamento = pagamentoRepository.findAllByPedidoId(java.util.UUID.fromString(pedidoId))
+                .stream()
+                .max(Comparator.comparing(PagamentoModel::getDataPagamento))
                 .orElseThrow(() -> new EntityNotFoundException("Pagamento não encontrado"));
         return converter.convert(pagamento);
     }
