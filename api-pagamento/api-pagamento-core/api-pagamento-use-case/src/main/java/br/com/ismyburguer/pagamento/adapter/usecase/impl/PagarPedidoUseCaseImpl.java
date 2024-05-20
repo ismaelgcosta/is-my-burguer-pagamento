@@ -3,7 +3,6 @@ package br.com.ismyburguer.pagamento.adapter.usecase.impl;
 import br.com.ismyburguer.controlepedido.adapter.interfaces.in.GerarControlePedidoUseCase;
 import br.com.ismyburguer.controlepedido.entity.ControlePedido;
 import br.com.ismyburguer.core.usecase.UseCase;
-import br.com.ismyburguer.pagamento.adapter.interfaces.in.ConsultarPagamentoPorPedidoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.ConsultarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.PagarPedidoUseCase;
