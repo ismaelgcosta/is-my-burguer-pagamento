@@ -4,8 +4,8 @@ import br.com.ismyburguer.pagamento.entity.Pagamento;
 
 import java.util.UUID;
 
-public interface EfetuarPagamentoRepository {
+public interface SalvarPagamentoRepository {
 
-    UUID pagar(Pagamento pagamento);
+    UUID salvar(Pagamento pagamento);
 
 }

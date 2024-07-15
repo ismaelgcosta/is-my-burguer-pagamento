@@ -2,7 +2,7 @@ package br.com.ismyburguer.pagamento.adapter.usecase.impl;
 
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
-import br.com.ismyburguer.pagamento.gateway.out.EfetuarPagamentoRepository;
+import br.com.ismyburguer.pagamento.gateway.out.SalvarPagamentoRepository;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -16,13 +16,13 @@ import static org.mockito.Mockito.*;
 
 public class EfetuarPagamentoUseCaseImplTest {
 
-    private EfetuarPagamentoRepository repositoryMock;
+    private SalvarPagamentoRepository repositoryMock;
     private EfetuarPagamentoUseCase useCase;
     private Validator validator;
 
     @BeforeEach
     public void setUp() {
-        repositoryMock = mock(EfetuarPagamentoRepository.class);
+        repositoryMock = mock(SalvarPagamentoRepository.class);
         useCase = new EfetuarPagamentoUseCaseImpl(repositoryMock);
         validator = Validation.buildDefaultValidatorFactory().getValidator();
     }
@@ -32,7 +32,7 @@ public class EfetuarPagamentoUseCaseImplTest {
         // Arrange
         Pagamento pagamento = spy(EnhancedRandomBuilder.aNewEnhancedRandom().nextObject(Pagamento.class));
         UUID pagamentoIdEsperado = UUID.randomUUID();
-        when(repositoryMock.pagar(pagamento)).thenReturn(pagamentoIdEsperado);
+        when(repositoryMock.salvar(pagamento)).thenReturn(pagamentoIdEsperado);
 
         // Act
         UUID pagamentoIdRetornado = useCase.pagar(pagamento);

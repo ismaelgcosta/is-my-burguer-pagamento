@@ -36,10 +36,9 @@ class GerarControlePedidoUseCaseImplTest {
         when(gerarControlePedidoAPI.gerar(pedidoId)).thenReturn(controlePedidoId);
 
         // Act
-        UUID resultado = gerarControlePedidoUseCase.receberPedido(pedidoId);
+        gerarControlePedidoUseCase.receberPedido(pedidoId);
 
         // Assert
-        assertEquals(controlePedidoId, resultado);
         verify(alterarStatusPedidoUseCase, times(1)).alterar(any(), eq(Pedido.StatusPedido.RECEBIDO));
     }
 }

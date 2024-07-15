@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-public class EfetuarPagamentoRepositoryImplTest {
+public class SalvarPagamentoRepositoryImplTest {
 
-    private EfetuarPagamentoRepositoryImpl repository;
+    private SalvarPagamentoRepositoryImpl repository;
     private PagamentoRepository pagamentoRepository;
     private PagamentoToPagamentoModelConverter converter;
 
@@ -22,7 +22,7 @@ public class EfetuarPagamentoRepositoryImplTest {
     void setUp() {
         pagamentoRepository = mock(PagamentoRepository.class);
         converter = mock(PagamentoToPagamentoModelConverter.class);
-        repository = new EfetuarPagamentoRepositoryImpl(pagamentoRepository, converter);
+        repository = new SalvarPagamentoRepositoryImpl(pagamentoRepository, converter);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class EfetuarPagamentoRepositoryImplTest {
         when(pagamentoModel.getPagamentoId()).thenReturn(pagamentoId);
 
         // Act
-        UUID result = repository.pagar(pagamento);
+        UUID result = repository.salvar(pagamento);
 
         // Assert
         assertNotNull(result);

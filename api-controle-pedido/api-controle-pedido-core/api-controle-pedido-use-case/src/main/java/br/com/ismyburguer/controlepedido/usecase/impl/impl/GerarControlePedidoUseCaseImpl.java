@@ -13,18 +13,16 @@ import java.util.UUID;
 
 @UseCase
 public class GerarControlePedidoUseCaseImpl implements GerarControlePedidoUseCase {
+
     private final GerarControlePedidoAPI gerarControlePedidoAPI;
-    private final AlterarStatusPedidoUseCase alterarStatusPedidoUseCase;
-    public GerarControlePedidoUseCaseImpl(GerarControlePedidoAPI gerarControlePedidoAPI,
-                                          AlterarStatusPedidoUseCase alterarStatusPedidoUseCase) {
+
+    public GerarControlePedidoUseCaseImpl(GerarControlePedidoAPI gerarControlePedidoAPI) {
         this.gerarControlePedidoAPI = gerarControlePedidoAPI;
-        this.alterarStatusPedidoUseCase = alterarStatusPedidoUseCase;
     }
 
     @Override
-    public UUID receberPedido(@Valid ControlePedido.PedidoId pedidoId) {
-        UUID controlePedidoId = gerarControlePedidoAPI.gerar(pedidoId);
-        alterarStatusPedidoUseCase.alterar(new Pedido.PedidoId(pedidoId.getPedidoId()), Pedido.StatusPedido.RECEBIDO);
-        return controlePedidoId;
+    public void receberPedido(@Valid ControlePedido.PedidoId pedidoId) {
+        gerarControlePedidoAPI.gerar(pedidoId);
     }
+
 }

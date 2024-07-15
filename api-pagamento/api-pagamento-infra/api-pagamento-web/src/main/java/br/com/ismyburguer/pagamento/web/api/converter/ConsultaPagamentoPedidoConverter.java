@@ -23,6 +23,7 @@ public class ConsultaPagamentoPedidoConverter implements Converter<Pagamento, Co
         }
 
         return new ConsultaPagamentoPedidoResponse(
+                source.getPagamentoId().getPagamentoId(),
                 new StatusPagamentoResponse(source.getStatusPagamento().name(), source.getStatusPagamento().getDescricao()),
                 new FormaPagamentoResponse(source.getFormaPagamento().name(), source.getFormaPagamento().getDescricao()),
                 new TipoPagamentoResponse(source.getTipoPagamento().name(), source.getTipoPagamento().getDescricao()),

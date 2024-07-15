@@ -3,7 +3,7 @@ package br.com.ismyburguer.pagamento.adapter.usecase.impl.steps;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.usecase.impl.EfetuarPagamentoUseCaseImpl;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
-import br.com.ismyburguer.pagamento.gateway.out.EfetuarPagamentoRepository;
+import br.com.ismyburguer.pagamento.gateway.out.SalvarPagamentoRepository;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 public class EfetuarPagamentoSteps {
 
-    private EfetuarPagamentoRepository repositoryMock;
+    private SalvarPagamentoRepository repositoryMock;
     private EfetuarPagamentoUseCase useCase;
     private Validator validator;
     private Pagamento pagamento;
@@ -28,7 +28,7 @@ public class EfetuarPagamentoSteps {
 
     @Before
     public void setUp() {
-        repositoryMock = mock(EfetuarPagamentoRepository.class);
+        repositoryMock = mock(SalvarPagamentoRepository.class);
         useCase = new EfetuarPagamentoUseCaseImpl(repositoryMock);
         validator = Validation.buildDefaultValidatorFactory().getValidator();
     }
@@ -37,7 +37,7 @@ public class EfetuarPagamentoSteps {
     public void um_pagamento_valido() {
         pagamento = spy(EnhancedRandomBuilder.aNewEnhancedRandom().nextObject(Pagamento.class));
         pagamentoIdEsperado = UUID.randomUUID();
-        when(repositoryMock.pagar(pagamento)).thenReturn(pagamentoIdEsperado);
+        when(repositoryMock.salvar(pagamento)).thenReturn(pagamentoIdEsperado);
     }
 
     @When("o pagamento é efetuado")
