@@ -17,8 +17,12 @@ import java.util.UUID;
 public class Pagamento implements Validation {
 
     @NotNull(message = "Informe o código do Pedido")
+    private PagamentoId pagamentoId;
+
+    @NotNull(message = "Informe o código do Pedido")
     private PedidoId pedidoId;
 
+    @Setter
     @NotNull(message = "Informe o valor Total do Pedido")
     private Total total;
 
@@ -41,11 +45,24 @@ public class Pagamento implements Validation {
         this.statusPagamento = StatusPagamento.PAGO;
     }
 
+    public void estornado() {
+        this.statusPagamento = StatusPagamento.ESTORNADO;
+    }
+
+    public void naoAutorizado() {
+        this.statusPagamento = StatusPagamento.NAO_AUTORIZADO;
+    }
+
+    public void aguardandoConfirmacao() {
+        this.statusPagamento = StatusPagamento.AGUARDANDO_CONFIRMACAO;
+    }
+
     @Getter
     public enum StatusPagamento {
 
         AGUARDANDO_CONFIRMACAO("Aguardando Confirmação do Pagamento"),
         NAO_AUTORIZADO("Não Autorizado"),
+        ESTORNADO("Estornado"),
         PAGO("Pago");
 
         private final String descricao;
@@ -108,6 +125,8 @@ public class Pagamento implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @NoArgsConstructor
+    @Setter
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")
@@ -120,10 +139,26 @@ public class Pagamento implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @NoArgsConstructor
+    @Setter
+    public static class PagamentoId {
+
+        @NotNull(message = "Informe o código do Pagamento")
+        private UUID pagamentoId;
+
+        public PagamentoId(String pagamentoId) {
+            this.pagamentoId = UUID.fromString(pagamentoId);
+        }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Setter
     public static class Total {
 
         @NotNull(message = "Informe o valor Total do Pedido")
-        @DecimalMin(value = "0.01", message = "O valor total do item deve ser de no mínimo R$0,01")
+        @DecimalMin(value = "100.00", message = "O valor total do item deve ser de no mínimo R$100,00")
         private BigDecimal valor;
 
     }

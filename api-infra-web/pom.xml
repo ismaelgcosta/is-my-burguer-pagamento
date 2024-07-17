@@ -20,6 +20,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-starter-sqs</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
@@ -72,7 +77,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>

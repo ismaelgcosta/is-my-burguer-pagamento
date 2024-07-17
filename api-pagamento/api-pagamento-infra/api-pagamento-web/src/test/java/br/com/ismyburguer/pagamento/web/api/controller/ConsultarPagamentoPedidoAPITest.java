@@ -13,6 +13,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -33,6 +35,7 @@ public class ConsultarPagamentoPedidoAPITest {
     void testConsultarPagamentoPedidoAPI() {
         // Criação do objeto de resposta simulada
         ConsultaPagamentoPedidoResponse respostaSimulada = new ConsultaPagamentoPedidoResponse(
+                UUID.randomUUID(),
                 new StatusPagamentoResponse("PAGO", "PAGO"),
                 new FormaPagamentoResponse("MERCADO_PAGO", "MERCADO_PAGO"),
                 new TipoPagamentoResponse("QR_CODE", "QR_CODE"),

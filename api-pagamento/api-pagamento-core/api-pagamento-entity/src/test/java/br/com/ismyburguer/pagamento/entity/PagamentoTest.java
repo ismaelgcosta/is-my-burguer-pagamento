@@ -20,6 +20,7 @@ class PagamentoTest {
 
         Pagamento source = EnhancedRandomBuilder.aNewEnhancedRandom().nextObject(Pagamento.class);
         new Pagamento(
+                source.getPagamentoId(),
                 source.getPedidoId(),
                 new Pagamento.Total(source.getTotal().getValor()),
                 Pagamento.StatusPagamento.valueOf(source.getStatusPagamento().name()),

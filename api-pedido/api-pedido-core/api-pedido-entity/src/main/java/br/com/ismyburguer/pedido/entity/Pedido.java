@@ -38,8 +38,10 @@ public class Pedido implements Validation {
         FECHADO("Fechado"),
         AGUARDANDO_PAGAMENTO("Aguardando Pagamento"),
         PAGO("Pago"),
+        AGUARDANDO_CONFIRMACAO_PAGAMENTO("Aguardando Confirmação de Pagamento"),
         PAGAMENTO_NAO_AUTORIZADO("Pagamento Não Autorizado"),
         RECEBIDO("Recebido"),
+        CANCELADO("Cancelado"),
         EM_PREPARACAO("Em Preparação"),
         PRONTO("Pronto"),
         FINALIZADO("Finalizado");

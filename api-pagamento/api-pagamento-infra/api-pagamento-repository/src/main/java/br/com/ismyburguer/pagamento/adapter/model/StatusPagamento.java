@@ -7,6 +7,7 @@ public enum StatusPagamento {
 
     AGUARDANDO_CONFIRMACAO,
     NAO_AUTORIZADO,
+    ESTORNADO,
     PAGO;
 
 }

@@ -10,6 +10,7 @@ public class PagamentoModelToPagamentoConverter implements Converter<PagamentoMo
     @Override
     public Pagamento convert(PagamentoModel source) {
         return new Pagamento(
+                new Pagamento.PagamentoId(source.getPagamentoId()),
                 new Pagamento.PedidoId(source.getPedidoId()),
                 new Pagamento.Total(source.getValorTotal()),
                 Pagamento.StatusPagamento.valueOf(source.getStatusPagamento().name()),

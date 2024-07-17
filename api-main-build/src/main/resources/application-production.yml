@@ -7,6 +7,11 @@ http:
       trust-store: classpath:springboot.p12
       trust-store-password: password
 
+events:
+  queues:
+    is-my-burguer-pagamento-queue: is-my-burguer-pagamento-queue.fifo
+    is-my-burguer-pedido-queue: is-my-burguer-pedido-queue.fifo
+
 feign:
   httpclient:
     disableSslValidation: true

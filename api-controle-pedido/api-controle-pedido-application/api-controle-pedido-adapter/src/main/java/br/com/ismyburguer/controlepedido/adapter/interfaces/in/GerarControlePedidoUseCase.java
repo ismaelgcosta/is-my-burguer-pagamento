@@ -7,5 +7,5 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public interface GerarControlePedidoUseCase {
-    UUID receberPedido(@Valid @NotNull(message = "Informe o pedido") ControlePedido.PedidoId pedidoId);
+    void receberPedido(@Valid @NotNull(message = "Informe o pedido") ControlePedido.PedidoId pedidoId);
 }

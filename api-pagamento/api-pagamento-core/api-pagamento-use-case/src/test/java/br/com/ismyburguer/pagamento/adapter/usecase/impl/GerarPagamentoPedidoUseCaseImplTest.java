@@ -12,7 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -21,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PagarPedidoUseCaseImplTest {
+public class GerarPagamentoPedidoUseCaseImplTest {
 
     @Mock
     private EfetuarPagamentoUseCase pagamentoUseCase;
@@ -39,7 +38,7 @@ public class PagarPedidoUseCaseImplTest {
     private GerarControlePedidoUseCase gerarControlePedidoUseCase;
 
     @InjectMocks
-    private PagarPedidoUseCaseImpl pagarPedidoUseCase;
+    private GerarPagamentoPedidoUseCaseImpl pagarPedidoUseCase;
 
     @Test
     void devePagarPedidoComSucesso() {
@@ -60,7 +59,7 @@ public class PagarPedidoUseCaseImplTest {
         when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamento);
 
         // Act
-        String result = pagarPedidoUseCase.pagar(new Pagamento.PedidoId(pedidoId));
+        UUID result = pagarPedidoUseCase.iniciarPagamento(new Pagamento(new Pagamento.PedidoId(pedidoId), new Pagamento.Total(BigDecimal.valueOf(100.00d))));
 
         // Assert
         assertEquals(qrCode, result);
@@ -88,7 +87,7 @@ public class PagarPedidoUseCaseImplTest {
         when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamento);
 
         // Act
-        String result = pagarPedidoUseCase.pagar(new Pagamento.PedidoId(pedidoId));
+        UUID result = pagarPedidoUseCase.iniciarPagamento(new Pagamento(new Pagamento.PedidoId(pedidoId), new Pagamento.Total(BigDecimal.valueOf(100.00d))));
 
         // Assert
         assertEquals(qrCode, result);
@@ -116,7 +115,7 @@ public class PagarPedidoUseCaseImplTest {
         when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamento);
 
         // Act
-        String result = pagarPedidoUseCase.pagar(new Pagamento.PedidoId(pedidoId));
+        UUID result = pagarPedidoUseCase.iniciarPagamento(new Pagamento(new Pagamento.PedidoId(pedidoId), new Pagamento.Total(BigDecimal.valueOf(100.00d))));
 
         // Assert
         assertEquals(qrCode, result);
@@ -146,7 +145,7 @@ public class PagarPedidoUseCaseImplTest {
         when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamento);
 
         // Act
-        String result = pagarPedidoUseCase.pagar(new Pagamento.PedidoId(pedidoId));
+        UUID result = pagarPedidoUseCase.iniciarPagamento(new Pagamento(new Pagamento.PedidoId(pedidoId), new Pagamento.Total(BigDecimal.valueOf(100.00d))));
 
         // Assert
         assertEquals(qrCode, result);
