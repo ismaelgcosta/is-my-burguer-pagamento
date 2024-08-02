@@ -16,7 +16,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Pagamento implements Validation {
 
-    @NotNull(message = "Informe o código do Pedido")
     private PagamentoId pagamentoId;
 
     @NotNull(message = "Informe o código do Pedido")
