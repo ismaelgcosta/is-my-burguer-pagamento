@@ -16,6 +16,7 @@ public class PagamentoToPagamentoModelConverterTest {
     void deveConverterPagamentoParaPagamentoModel() {
         // Arrange
         Pagamento pagamento = new Pagamento(
+                null,
                 new Pagamento.PedidoId(UUID.randomUUID()),
                 new Pagamento.Total(BigDecimal.valueOf(100.0)),
                 Pagamento.StatusPagamento.PAGO,
