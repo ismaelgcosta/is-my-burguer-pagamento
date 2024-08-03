@@ -18,6 +18,6 @@ class PedidoRequestTest {
 
         PedidoRequest pedidoRequest1 = new PedidoRequest(pedidoId, StatusPedidoRequest.RECEBIDO);
 
-        assertEquals(pedidoRequest, pedidoRequest1);
+        assertTrue(pedidoRequest.equals(pedidoRequest1));
     }
 }
