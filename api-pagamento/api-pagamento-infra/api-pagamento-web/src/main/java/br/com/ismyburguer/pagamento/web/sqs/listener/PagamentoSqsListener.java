@@ -9,9 +9,11 @@ import br.com.ismyburguer.pagamento.web.api.request.PagamentoRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.awspring.cloud.sqs.annotation.SqsListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile(value = {"dev", "production"})
 public class PagamentoSqsListener {
 
     private final GerarPagamentoPedidoUseCase gerarPagamentoPedidoUseCase;
