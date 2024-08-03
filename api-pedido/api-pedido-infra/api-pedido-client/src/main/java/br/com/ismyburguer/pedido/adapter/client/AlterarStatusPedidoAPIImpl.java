@@ -34,7 +34,8 @@ public class AlterarStatusPedidoAPIImpl implements AlterarStatusPedidoAPI {
     public void alterar(Pedido.PedidoId pedidoId, Pedido.StatusPedido statusPedido) {
         Consumer<SqsSendOptions<Object>> sqsSendOptionsConsumer = to -> {
             try {
-                to.queue(pedidoQueue).payload(objectMapper.writer().withDefaultPrettyPrinter().writeValueAsString(new PedidoRequest(
+                SqsSendOptions<Object> queue = to.queue(pedidoQueue);
+                queue.payload(objectMapper.writer().withDefaultPrettyPrinter().writeValueAsString(new PedidoRequest(
                         pedidoId.getPedidoId(),
                         StatusPedidoRequest.valueOf(statusPedido.name())
                 )));
