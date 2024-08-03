@@ -39,6 +39,6 @@ class GerarControlePedidoUseCaseImplTest {
         gerarControlePedidoUseCase.receberPedido(pedidoId);
 
         // Assert
-        verify(alterarStatusPedidoUseCase, times(1)).alterar(any(), eq(Pedido.StatusPedido.RECEBIDO));
+        verify(gerarControlePedidoAPI).gerar(pedidoId);
     }
 }
