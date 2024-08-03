@@ -7,13 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class ValidationTest {
     private Dummy dummy;
 
     // Criando uma classe anônima simulada que implementa a interface Validation
 
     @Setter
-    public static final class Dummy implements br.com.ismyburguer.core.validation.Validation {
+    public static final class Dummy implements Validation {
         @NotNull(message = "não deve ser nulo")
         private String notNull;
     };

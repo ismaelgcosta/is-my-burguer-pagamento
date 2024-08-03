@@ -28,6 +28,7 @@ public class PagamentoToPagamentoRequestConverterTest {
         // Configuração
         UUID pedidoId = UUID.randomUUID();
         Pagamento pagamento = new Pagamento(
+                new Pagamento.PagamentoId(UUID.randomUUID()),
                 new Pagamento.PedidoId(pedidoId),
                 new Pagamento.Total(BigDecimal.ONE),
                 Pagamento.StatusPagamento.PAGO,

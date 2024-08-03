@@ -40,7 +40,7 @@ public class EfetuarPagamentoUseCaseImplTest {
         // Assert
         assertNotNull(pagamentoIdRetornado);
         assertEquals(pagamentoIdEsperado, pagamentoIdRetornado);
-        assertSame(pagamento.getStatusPagamento(), Pagamento.StatusPagamento.PAGO);
+        assertSame(pagamento.getStatusPagamento(), Pagamento.StatusPagamento.AGUARDANDO_CONFIRMACAO);
         assertNotNull(pagamento.getQrCode());
 
         // Verifica se o método de validação foi chamado

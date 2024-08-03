@@ -27,6 +27,7 @@ public class ConsultaPagamentoPedidoConverterTest {
     void testConvert_Success() {
         // Configuração
         Pagamento pagamento = new Pagamento(
+                new Pagamento.PagamentoId(UUID.randomUUID()),
                 new Pagamento.PedidoId(UUID.randomUUID()),
                 new Pagamento.Total(BigDecimal.ONE),
                 Pagamento.StatusPagamento.PAGO,
