@@ -15,9 +15,5 @@ class PedidoRequestTest {
         PedidoRequest pedidoRequest = new PedidoRequest(pedidoId, StatusPedidoRequest.RECEBIDO);
         assertEquals(pedidoRequest.getPedidoId(), pedidoId);
         assertEquals(pedidoRequest.getStatusPedido(), StatusPedidoRequest.RECEBIDO);
-
-        PedidoRequest pedidoRequest1 = new PedidoRequest(pedidoId, StatusPedidoRequest.RECEBIDO);
-
-        assertTrue(pedidoRequest.equals(pedidoRequest1));
     }
 }

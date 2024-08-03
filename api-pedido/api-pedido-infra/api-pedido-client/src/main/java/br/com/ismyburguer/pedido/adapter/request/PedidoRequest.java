@@ -7,7 +7,6 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class PedidoRequest {
 
     UUID pedidoId;
