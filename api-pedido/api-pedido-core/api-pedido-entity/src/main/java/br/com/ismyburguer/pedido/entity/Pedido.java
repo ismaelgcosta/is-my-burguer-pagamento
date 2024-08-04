@@ -4,10 +4,7 @@ package br.com.ismyburguer.pedido.entity;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -60,6 +57,7 @@ public class Pedido implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")

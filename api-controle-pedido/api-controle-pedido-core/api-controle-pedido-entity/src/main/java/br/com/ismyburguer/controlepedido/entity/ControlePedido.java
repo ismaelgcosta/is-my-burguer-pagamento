@@ -3,6 +3,7 @@ package br.com.ismyburguer.controlepedido.entity;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -56,6 +57,7 @@ public class ControlePedido implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")
@@ -68,6 +70,7 @@ public class ControlePedido implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class ControlePedidoId {
 
         @NotNull(message = "Informe o código de Controle do Pedido")

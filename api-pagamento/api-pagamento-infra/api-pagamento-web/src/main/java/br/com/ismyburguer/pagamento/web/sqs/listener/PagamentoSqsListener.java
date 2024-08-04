@@ -41,7 +41,7 @@ public class PagamentoSqsListener {
                 Pagamento pagamento = pagamentoRequestToPagamentoConverter.convert(pagamentoRequest);
                 gerarPagamentoPedidoUseCase.iniciarPagamento(pagamento);
             }
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("Erro ao realizar pagamento do pedido", e);
         }
     }
