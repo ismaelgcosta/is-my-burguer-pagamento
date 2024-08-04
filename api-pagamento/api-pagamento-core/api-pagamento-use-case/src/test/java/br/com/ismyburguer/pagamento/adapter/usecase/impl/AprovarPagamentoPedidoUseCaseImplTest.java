@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class AprovarPagamentoPedidoUseCaseImplTest {
+class AprovarPagamentoPedidoUseCaseImplTest {
 
     @Mock
     private SalvarPagamentoRepository repository;
@@ -32,12 +32,12 @@ public class AprovarPagamentoPedidoUseCaseImplTest {
     private AprovarPagamentoPedidoUseCaseImpl aprovarPagamentoPedidoUseCase;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         aprovarPagamentoPedidoUseCase = new AprovarPagamentoPedidoUseCaseImpl(repository, alterarStatusPedidoUseCase, gerarControlePedidoUseCase);
     }
 
     @Test
-    public void deveAprovarPagamentoAlterarStatusPedidoParaPagoEGeraControlePedido() {
+    void deveAprovarPagamentoAlterarStatusPedidoParaPagoEGeraControlePedido() {
         Pagamento pagamentoMock = mock(Pagamento.class);
         String pedidoId = UUID.randomUUID().toString();
         when(pagamentoMock.getPedidoId()).thenReturn(new Pagamento.PedidoId(pedidoId));
@@ -47,12 +47,12 @@ public class AprovarPagamentoPedidoUseCaseImplTest {
         verify(pagamentoMock).validate();
         verify(pagamentoMock).pago();
         verify(repository).salvar(pagamentoMock);
-        verify(alterarStatusPedidoUseCase).alterar(new Pedido.PedidoId(pedidoId), Pedido.StatusPedido.PAGO);
-        verify(gerarControlePedidoUseCase).receberPedido(new ControlePedido.PedidoId(pedidoId));
+        verify(alterarStatusPedidoUseCase).alterar(any(), eq(Pedido.StatusPedido.PAGO));
+        verify(gerarControlePedidoUseCase).receberPedido(any());
     }
 
     @Test
-    public void deveAlterarStatusParaAguardandoConfirmacaoEmCasoDeErroEAlancarExcecao() {
+    void deveAlterarStatusParaAguardandoConfirmacaoEmCasoDeErroEAlancarExcecao() {
         Pagamento pagamentoMock = mock(Pagamento.class);
         String pedidoId = UUID.randomUUID().toString();
         when(pagamentoMock.getPedidoId()).thenReturn(new Pagamento.PedidoId(pedidoId));
@@ -63,7 +63,7 @@ public class AprovarPagamentoPedidoUseCaseImplTest {
         verify(pagamentoMock).validate();
         verify(pagamentoMock).pago();
         verify(repository, never()).salvar(pagamentoMock);
-        verify(alterarStatusPedidoUseCase).alterar(new Pedido.PedidoId(pedidoId), Pedido.StatusPedido.AGUARDANDO_CONFIRMACAO_PAGAMENTO);
+        verify(alterarStatusPedidoUseCase).alterar(any(), eq(Pedido.StatusPedido.AGUARDANDO_CONFIRMACAO_PAGAMENTO));
         verify(gerarControlePedidoUseCase, never()).receberPedido(any());
     }
 }

@@ -56,7 +56,6 @@ public class Pedido implements Validation {
 
     @Getter
     @AllArgsConstructor
-    @EqualsAndHashCode
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")

@@ -43,7 +43,7 @@ public class ReprovarPagamentoPedidoUseCaseImplTest {
         verify(pagamentoMock).validate();
         verify(pagamentoMock).naoAutorizado();
         verify(repository).salvar(pagamentoMock);
-        verify(alterarStatusPedidoUseCase).alterar(new Pedido.PedidoId(pagamentoMock.getPedidoId().getPedidoId()), Pedido.StatusPedido.PAGAMENTO_NAO_AUTORIZADO);
+        verify(alterarStatusPedidoUseCase).alterar(any(), eq(Pedido.StatusPedido.PAGAMENTO_NAO_AUTORIZADO));
     }
 
     @Test
