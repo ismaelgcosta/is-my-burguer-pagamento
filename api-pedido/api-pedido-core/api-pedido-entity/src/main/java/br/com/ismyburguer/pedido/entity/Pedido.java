@@ -19,7 +19,6 @@ public class Pedido implements Validation {
     private PedidoId pedidoId;
 
     @Valid
-    @Setter
     private ClienteId clienteId;
 
     @Getter
@@ -27,6 +26,10 @@ public class Pedido implements Validation {
 
     @Setter
     private BigDecimal total;
+
+    public Pedido(PedidoId pedidoId) {
+        this.pedidoId = pedidoId;
+    }
 
     @Getter
     public enum StatusPedido {
@@ -49,10 +52,6 @@ public class Pedido implements Validation {
             this.descricao = descricao;
         }
 
-        @Override
-        public String toString() {
-            return descricao;
-        }
     }
 
     @Getter
