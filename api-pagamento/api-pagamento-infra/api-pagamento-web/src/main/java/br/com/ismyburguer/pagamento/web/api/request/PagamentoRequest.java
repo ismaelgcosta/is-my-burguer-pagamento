@@ -3,9 +3,10 @@ package br.com.ismyburguer.pagamento.web.api.request;
 import br.com.ismyburguer.pagamento.web.api.enumeration.FormaPagamento;
 import br.com.ismyburguer.pagamento.web.api.enumeration.StatusPagamento;
 import br.com.ismyburguer.pagamento.web.api.enumeration.TipoPagamento;
-import lombok.*;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -14,7 +15,6 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "pagamentoId")
 public class PagamentoRequest {
 
     private UUID pagamentoId = UUID.randomUUID();

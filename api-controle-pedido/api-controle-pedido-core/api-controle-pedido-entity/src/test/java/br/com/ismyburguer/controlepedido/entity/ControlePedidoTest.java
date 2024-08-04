@@ -1,6 +1,5 @@
 package br.com.ismyburguer.controlepedido.entity;
 
-import br.com.ismyburguer.core.exception.BusinessException;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import jakarta.validation.ConstraintViolationException;
 import nl.jqno.equalsverifier.EqualsVerifier;
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ControlePedidoTest {
 
@@ -35,7 +33,7 @@ class ControlePedidoTest {
         // Ação
         ControlePedido controlePedido = new ControlePedido(
                 new ControlePedido.ControlePedidoId(UUID.randomUUID()),
-                new ControlePedido.PedidoId(pedidoId),
+                new ControlePedido.PedidoId(pedidoId.toString()),
                 ControlePedido.StatusControlePedido.EM_PREPARACAO,
                 LocalDateTime.now(),
                 LocalDateTime.now(),
@@ -45,10 +43,11 @@ class ControlePedidoTest {
         // Verificação
         assertNotNull(controlePedido);
         assertEquals(pedidoId.toString(), controlePedido.getPedidoId().getPedidoId().toString());
-        assertEquals(ControlePedido.StatusControlePedido.EM_PREPARACAO, controlePedido.getStatusControlePedido());
+        assertEquals(ControlePedido.StatusControlePedido.EM_PREPARACAO.getDescricao(), controlePedido.getStatusControlePedido().getDescricao());
         assertNotNull(controlePedido.getRecebidoEm());
         assertNotNull(controlePedido.getInicioDaPreparacao());
         assertNotNull(controlePedido.getFimDaPreparacao());
+        assertNotNull(controlePedido.getControlePedidoId());
     }
 
     @Test

@@ -45,21 +45,4 @@ public class PagamentoRequestTest {
         assertEquals(valorTotal, request.getValorTotal());
         assertEquals(qrCode, request.getQrCode());
     }
-
-    @Test
-    void testEqualsAndHashCode() {
-        UUID pedidoId = UUID.randomUUID();
-        UUID pagamentoId = UUID.randomUUID();
-        StatusPagamento statusPagamento = StatusPagamento.PAGO;
-        TipoPagamento tipoPagamento = TipoPagamento.QR_CODE;
-        FormaPagamento formaPagamento = FormaPagamento.MERCADO_PAGO;
-        BigDecimal valorTotal = new BigDecimal("100.50");
-        String qrCode = "https://pagseguro.com.br/qr-code";
-
-        PagamentoRequest request1 = new PagamentoRequest(pagamentoId, pedidoId, statusPagamento, tipoPagamento, formaPagamento, valorTotal, qrCode);
-        PagamentoRequest request2 = new PagamentoRequest(pagamentoId, pedidoId, statusPagamento, tipoPagamento, formaPagamento, valorTotal, qrCode);
-
-        assertEquals(request1, request2);
-        assertEquals(request1.hashCode(), request2.hashCode());
-    }
 }
