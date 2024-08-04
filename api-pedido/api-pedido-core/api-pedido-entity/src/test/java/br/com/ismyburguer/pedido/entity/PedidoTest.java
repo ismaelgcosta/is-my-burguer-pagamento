@@ -34,6 +34,13 @@ class PedidoTest {
         assertEquals(clienteId, pedido.getClienteId().get());
         assertEquals(Pedido.StatusPedido.FECHADO, pedido.getStatusPedido());
 
+        pedido = new Pedido(pedidoId);
+        assertEquals(pedidoId, pedido.getPedidoId());
+
+        pedidoId = new Pedido.PedidoId(UUID.randomUUID());
+        pedido = new Pedido(pedidoId);
+        assertEquals(pedidoId, pedido.getPedidoId());
+
     }
 
 }

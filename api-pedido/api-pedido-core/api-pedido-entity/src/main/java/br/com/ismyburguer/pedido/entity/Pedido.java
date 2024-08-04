@@ -4,10 +4,7 @@ package br.com.ismyburguer.pedido.entity;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -22,7 +19,6 @@ public class Pedido implements Validation {
     private PedidoId pedidoId;
 
     @Valid
-    @Setter
     private ClienteId clienteId;
 
     @Getter
@@ -30,6 +26,10 @@ public class Pedido implements Validation {
 
     @Setter
     private BigDecimal total;
+
+    public Pedido(PedidoId pedidoId) {
+        this.pedidoId = pedidoId;
+    }
 
     @Getter
     public enum StatusPedido {
@@ -52,10 +52,6 @@ public class Pedido implements Validation {
             this.descricao = descricao;
         }
 
-        @Override
-        public String toString() {
-            return descricao;
-        }
     }
 
     @Getter

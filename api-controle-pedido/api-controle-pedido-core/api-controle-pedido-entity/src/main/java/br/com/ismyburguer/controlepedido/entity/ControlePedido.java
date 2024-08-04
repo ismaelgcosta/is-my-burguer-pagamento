@@ -3,6 +3,7 @@ package br.com.ismyburguer.controlepedido.entity;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -41,15 +42,6 @@ public class ControlePedido implements Validation {
 
         StatusControlePedido(String descricao) {
             this.descricao = descricao;
-        }
-
-        public String getDescricao() {
-            return descricao;
-        }
-
-        @Override
-        public String toString() {
-            return descricao;
         }
 
     }
